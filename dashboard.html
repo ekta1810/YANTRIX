@@ -144,5 +144,46 @@
 </div>
 
 <script src="script.js"></script>
+
+ <!-- for message section  -->
+        <script src="/socket.io/socket.io.js"></script>
+        <script>
+            const socket = io();
+
+            const chatForm = document.getElementById("chatForm");
+            const chatInput = document.getElementById("chatInput");
+            const chatBox = document.getElementById("chatBox");
+            const typingIndicator = document.getElementById("typingIndicator");
+
+            // ✅ Receive messages from server
+            socket.on("message", (message) => {
+                const p = document.createElement("p");
+                p.textContent = message;
+                chatBox.appendChild(p);
+                chatBox.scrollTop = chatBox.scrollHeight;
+            });
+
+            // ✅ Typing indicator (optional)
+            chatInput.addEventListener("input", () => {
+                socket.emit("typing", "Someone is typing...");
+            });
+
+            socket.on("typing", (data) => {
+                typingIndicator.textContent = data;
+                setTimeout(() => {
+                    typingIndicator.textContent = "";
+                }, 2000);
+            });
+
+            // ✅ Send message
+            chatForm.addEventListener("submit", (e) => {
+                e.preventDefault();
+                const message = chatInput.value.trim();
+                if (message !== "") {
+                    socket.emit("chat message", message);
+                    chatInput.value = "";
+                }
+            });
+        </script>        
 </body>
 </html>
