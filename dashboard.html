@@ -155,7 +155,7 @@
             const chatBox = document.getElementById("chatBox");
             const typingIndicator = document.getElementById("typingIndicator");
 
-            // ✅ Receive messages from server
+            // Receive messages from server
             socket.on("message", (message) => {
                 const p = document.createElement("p");
                 p.textContent = message;
@@ -163,7 +163,7 @@
                 chatBox.scrollTop = chatBox.scrollHeight;
             });
 
-            // ✅ Typing indicator (optional)
+            // Typing indicator (optional)
             chatInput.addEventListener("input", () => {
                 socket.emit("typing", "Someone is typing...");
             });
@@ -175,7 +175,7 @@
                 }, 2000);
             });
 
-            // ✅ Send message
+            // Send message
             chatForm.addEventListener("submit", (e) => {
                 e.preventDefault();
                 const message = chatInput.value.trim();
