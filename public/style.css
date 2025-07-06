@@ -1,0 +1,121 @@
+body {
+  font-family: 'Segoe UI', sans-serif;
+  body {
+  background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+  color: white;
+}
+  margin: 0;
+  padding: 0;
+}
+
+
+.sidebar {
+  width: 250px;
+  min-height: 100vh;
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar a:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 5px;
+  padding-left: 10px;
+  transition: 0.3s;
+}
+
+.card {
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  transition: transform 0.3s ease;
+}
+
+#chatBox p {
+  margin-bottom: 0.5rem;
+ 
+  scroll-behavior: smooth;
+
+
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-task {
+  animation: slideInUp 0.5s ease-out;
+}
+.top-nav a {
+  text-decoration: none;
+}
+.top-nav a:hover {
+  text-decoration: underline;
+}
+.active-card {
+  background-color: #e0f7fa;
+}
+.paused-card {
+  background-color: #fff8e1;
+}
+.completed-card {
+  background-color: #e8f5e9;
+}
+
+.card {
+  transition: transform 0.2s ease;
+}
+.card:hover {
+  transform: scale(1.02);
+}
+/* Base Card Style */
+.card {
+  border: none;
+  border-radius: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Hover effect */
+.card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Colorful Gradient Backgrounds */
+.active-card {
+  background: linear-gradient(to right, #a1c4fd, #c2e9fb); /* blue gradient */
+  color: #003366;
+}
+
+.paused-card {
+  background: linear-gradient(to right, #fdfbda, #fceabb); /* yellow gradient */
+  color: #665c00;
+}
+
+.completed-card {
+  background: linear-gradient(to right, #d4fc79, #96e6a1); /* green gradient */
+  color: #004d1a;
+}
+
+/* Heading styling */
+.card-title {
+  font-weight: 700;
+  font-size: 1.25rem;
+}
+
+/* Badge tweaks */
+.badge {
+  font-size: 0.85rem;
+  padding: 0.5em 0.75em;
+  border-radius: 50px;
+}
+
