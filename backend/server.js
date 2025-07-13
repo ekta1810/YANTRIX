@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require("express");
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
@@ -6,7 +7,7 @@ const cors = require("cors");
 const http = require("http");  // ✅ you forgot this
 const socketIo = require("socket.io");
 
-const SECRET_KEY = "supersecretkey";
+// const SECRET_KEY = "supersecretkey";
 
 const app = express();
 const server = http.createServer(app);  // ✅ create http server
@@ -19,7 +20,7 @@ const io = socketIo(server, {
 
 // Connect to MongoDB
 mongoose
-  .connect("mongodb://localhost:27017/yantrix", {
+  .connect("mongodb+srv://mdzaid822503:mdzaid82404@cluster0.o874ysk.mongodb.net/yantrix?retryWrites=true&w=majority", {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
@@ -31,6 +32,11 @@ const User = require("./models/User");
 
 app.use(cors());
 app.use(express.json());
+
+// task
+app.use("/api/tasks",require("./routes/task"))
+app.use("/api/projects",require("./routes/project"))
+app.use("/api/users",require("./routes/user"))
 
 // API: Signup
 app.post("/api/signup", async (req, res) => {
@@ -61,7 +67,7 @@ app.post("/api/login", async (req, res) => {
     }
 
     const token = jwt.sign(
-      { email: user.email, role: user.role },
+      { id:user._id,email: user.email, role: user.role },
       SECRET_KEY,
       { expiresIn: "1h" }
     );
